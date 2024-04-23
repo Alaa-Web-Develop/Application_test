@@ -41,5 +41,5 @@ class connection_db{
 }
 
 //test_connection
-$x=new connection_db;
-$x->runDQL("select * from `users` where `email` = 'alaa'");
+// $x=new connection_db;
+// $x->runDQL("select * from `users` where `email` = 'alaa'");

@@ -1,6 +1,8 @@
 <?php
-include_once __DIR__ . '\..\database\connection_db.php';
-include_once __DIR__ . '\..\database\operations.php';
+
+
+include __DIR__ . '/../database/connection_db.php';
+include __DIR__ . '/../database/operations.php';
 
 //Model : every table in db has correspend class with name difiniion , Make query and operations in this table
 
@@ -226,14 +228,36 @@ class User extends connection_db implements operations
 
         public function create()
         {
+                $query ="INSERT INTO `users`(`user_name`, `password`, `city`, `gender`, `message`, `token`, `status`) VALUES ('$this->user_name','$this->password','$this->city','$this->gender','$this->message','$this->token','$this->status')";
+
+               return $this->runDML($query);
+
         }
         public function read()
         {
+                $query="SELECT * FROM `users`";
+                return $this->runDQL($query);
         }
+        public function getUserById()
+        {
+                $query="SELECT * FROM `users` WHERE `id` = $this->id";
+                return $this->runDQL($query);
+        }
+
         public function update()
         {
+                $query="UPDATE `users` SET `user_name`='$this->user_name',`password`='$this->password',`city`='$this->city',`gender`='$this->gender',`message`='$this->message',`token`='$this->token',`status`='$this->status' WHERE `id`= $this->id ";
+
+               return $this->runDML($query);
+
         }
         public function delete()
         {
+                $query="DELETE FROM `users` WHERE `id`= $this->id ";
+
+                return $this->runDML($query);
         }
+
+      
 }
+
